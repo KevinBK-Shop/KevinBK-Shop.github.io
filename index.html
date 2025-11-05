@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kevin Bauer - International Economic Student</title>
     <meta name="description" content="Portfolio of Kevin Bauer, International Economic Student">
-
     <style>
         * {
             margin: 0;
@@ -95,9 +94,12 @@
             z-index: -1;
         }
 
-        /* Fix: Scroll-Offset für festen Header */
+        section {
+            position: relative; /* wichtig, damit ::before korrekt positioniert wird */
+        }
+
         html {
-            scroll-padding-top: 80px;
+        scroll-padding-top: 64px;
         }
 
         /* Subtle gradient effect on scroll - no lighting, just gentle gradient */
@@ -116,6 +118,7 @@
             transform: translateX(0);
         }
 
+        /* Individual skill boxes with reversible animations */
         .skills-grid {
             display: flex;
             flex-wrap: wrap;
@@ -179,6 +182,10 @@
             position: relative;
         }
 
+        .hero h1 {
+            color: var(--fg);
+        }
+
         .btn {
             display: inline-block;
             padding: 0.75rem 1.5rem;
@@ -230,6 +237,15 @@
             border: 1px solid var(--border);
             border-radius: 0.5rem;
             padding: 2rem;
+        }
+
+        .project-slide h3 {
+            margin-bottom: 1rem;
+        }
+
+        .project-slide p {
+            color: var(--muted-fg);
+            margin-bottom: 1rem;
         }
 
         .tech-stack {
@@ -303,6 +319,11 @@
             cursor: not-allowed;
         }
 
+        .slider-dots {
+            display: flex;
+            gap: 0.5rem;
+        }
+
         .slider-dot {
             width: 8px;
             height: 8px;
@@ -322,6 +343,17 @@
             text-align: center;
         }
 
+        #contact h2 {
+            text-align: center;
+        }
+
+        #contact > p {
+            text-align: center;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
         .contact-buttons {
             display: flex;
             gap: 1rem;
@@ -333,25 +365,29 @@
             h1 {
                 font-size: 2rem;
             }
+
             h2 {
                 font-size: 1.5rem;
             }
+
             .subtitle {
                 font-size: 1.25rem;
             }
+
             section {
                 padding: 1.5rem 1rem;
             }
+
             .nav-links {
                 gap: 1rem;
             }
+
             .social-links {
                 flex-direction: column;
             }
         }
     </style>
 </head>
-
 <body>
     <header>
         <nav>
@@ -380,7 +416,7 @@
     <section id="about">
         <h2 class="fly-in-text">About Me</h2>
         <p class="fly-in-text" style="max-width: 800px; font-size: 1.125rem; line-height: 1.8;">
-            I'm Kevin Bauer, an International Economic Student with a passion for understanding global markets, 
+            Hello! I'm Kevin Bauer, an International Economic Student with a passion for understanding global markets, 
             business dynamics, and entrepreneurship. Currently, I'm building practical business experience through 
             my detailing business while pursuing my studies. I believe in combining theoretical knowledge with 
             real-world application to create meaningful impact.
@@ -405,12 +441,12 @@
                             <span class="tech-tag">Quality Control</span>
                         </div>
                     </div>
-
                     <div class="project-slide">
                         <h3>VW T5 Custom Products E-Commerce</h3>
                         <p>
                             Online shop specializing in custom-made products for the VW T5. Offering unique, high-quality 
-                            accessories and modifications tailored specifically for VW T5 owners.
+                            accessories and modifications tailored specifically for VW T5 owners. From design to delivery, 
+                            providing personalized solutions for van enthusiasts.
                         </p>
                         <div class="tech-stack">
                             <span class="tech-tag">E-Commerce</span>
@@ -421,18 +457,26 @@
                     </div>
                 </div>
             </div>
-
             <div class="slider-nav">
-                <button class="slider-btn" id="prevBtn" onclick="changeSlide(-1)">❮</button>
+                <button class="slider-btn" id="prevBtn" onclick="changeSlide(-1)">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
                 <div class="slider-dots">
                     <span class="slider-dot active" onclick="goToSlide(0)"></span>
                     <span class="slider-dot" onclick="goToSlide(1)"></span>
                 </div>
-                <button class="slider-btn" id="nextBtn" onclick="changeSlide(1)">❯</button>
+                <button class="slider-btn" id="nextBtn" onclick="changeSlide(1)">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
             </div>
         </div>
     </section>
 
+    <!-- Individual skill boxes instead of categories -->
     <section id="skills">
         <h2 class="fly-in-text">Skills</h2>
         <div class="skills-grid">
@@ -456,32 +500,54 @@
         <p class="fly-in-text" style="margin-bottom: 2rem; color: var(--muted-fg);">
             Feel free to reach out for collaborations, opportunities, or just to connect!
         </p>
-
+        
+        <!-- Removed Send Message button, kept only Get in Touch and Support My Work -->
         <div class="contact-buttons fly-in-text">
             <a href="mailto:bauerkeving@gmail.com" class="btn">Get in Touch</a>
             <a href="https://paypal.me/KevinBauer434" target="_blank" class="btn">Support My Work</a>
         </div>
 
         <div class="social-links fly-in-text">
-            <a href="https://instagram.com/kevin_bgb" target="_blank" class="social-link">Instagram</a>
-            <a href="https://tiktok.com/@kevinbgb" target="_blank" class="social-link">TikTok</a>
-            <a href="mailto:bauerkeving@gmail.com" class="social-link">Email</a>
+            <a href="https://instagram.com/kevin_bgb" target="_blank" class="social-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+                Instagram
+            </a>
+            <a href="https://tiktok.com/@kevinbgb" target="_blank" class="social-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                </svg>
+                TikTok
+            </a>
+            <a href="mailto:bauerkeving@gmail.com" class="social-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                Email
+            </a>
         </div>
     </section>
 
     <script>
-        // Smooth scroll for navigation
+        // Smooth scroll for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', e => {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                const target = document.querySelector(anchor.getAttribute('href'));
+                const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
                 }
             });
         });
 
-        // Project slider
+        // Carousel functionality for projects slider
         let currentSlide = 0;
         const totalSlides = 2;
 
@@ -490,57 +556,90 @@
             const dots = document.querySelectorAll('.slider-dot');
             const prevBtn = document.getElementById('prevBtn');
             const nextBtn = document.getElementById('nextBtn');
+            
             track.style.transform = `translateX(-${currentSlide * 100}%)`;
-            dots.forEach((dot, i) => dot.classList.toggle('active', i === currentSlide));
+            
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+            
             prevBtn.disabled = currentSlide === 0;
             nextBtn.disabled = currentSlide === totalSlides - 1;
         }
 
-        function changeSlide(dir) {
-            currentSlide = Math.max(0, Math.min(currentSlide + dir, totalSlides - 1));
+        function changeSlide(direction) {
+            currentSlide += direction;
+            if (currentSlide < 0) currentSlide = 0;
+            if (currentSlide >= totalSlides) currentSlide = totalSlides - 1;
             updateSlider();
         }
 
-        function goToSlide(i) {
-            currentSlide = i;
+        function goToSlide(index) {
+            currentSlide = index;
             updateSlider();
         }
 
-        // Section highlight
-        const sectionObserver = new IntersectionObserver(entries => {
+        /* Subtle section gradient effect on scroll */
+        const sectionObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    document.querySelectorAll('section').forEach(s => s.classList.remove('section-active'));
+                    document.querySelectorAll('section').forEach(s => {
+                        if (s !== entry.target) {
+                            s.classList.remove('section-active');
+                        }
+                    });
                     entry.target.classList.add('section-active');
                 }
             });
-        }, { threshold: 0.3 });
+        }, {
+            threshold: 0.3,
+            rootMargin: '-100px 0px -100px 0px'
+        });
 
-        // Fly-in animations
-        const textObserver = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('visible');
-            });
-        }, { threshold: 0.1 });
-
-        // Skill animations
-        const skillObserver = new IntersectionObserver(entries => {
+        /* Text fly-in animation observer */
+        const textObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-in');
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        /* Reversible skill box animations */
+        const skillObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
                     entry.target.classList.remove('animate-out');
+                    entry.target.classList.add('animate-in');
                 } else {
                     entry.target.classList.remove('animate-in');
                     entry.target.classList.add('animate-out');
                 }
             });
-        }, { threshold: 0.2 });
+        }, {
+            threshold: 0.2,
+            rootMargin: '0px 0px -100px 0px'
+        });
 
+        // Initialize observers on page load
         document.addEventListener('DOMContentLoaded', () => {
-            document.querySelectorAll('section').forEach(section => sectionObserver.observe(section));
-            document.querySelectorAll('.fly-in-text').forEach(text => textObserver.observe(text));
-            document.querySelectorAll('.skill-box').forEach((box, i) => {
-                box.style.transitionDelay = `${i * 0.05}s`;
+            // Observe all sections for subtle gradient effect
+            document.querySelectorAll('section').forEach(section => {
+                sectionObserver.observe(section);
+            });
+
+            // Observe all text elements for fly-in
+            document.querySelectorAll('.fly-in-text').forEach(text => {
+                textObserver.observe(text);
+            });
+
+            // Observe skill boxes for reversible animation
+            const skillBoxes = document.querySelectorAll('.skill-box');
+            skillBoxes.forEach((box, index) => {
+                box.style.transitionDelay = `${index * 0.05}s`;
                 skillObserver.observe(box);
             });
         });
