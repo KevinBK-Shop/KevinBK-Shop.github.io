@@ -43,6 +43,23 @@
             z-index: 1000;
         }
 
+        .about-image {
+  flex-shrink: 0;
+}
+
+.about-image img {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #ddd; /* optionaler Rahmen */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.about-image img:hover {
+  transform: scale(1.05);
+}
         nav {
             max-width: 1200px;
             margin: 0 auto;
