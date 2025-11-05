@@ -43,22 +43,26 @@
             z-index: 1000;
         }
 
-        .about-image {
-  flex-shrink: 0;
+.hero-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap; /* Damit es auf mobilen Geräten untereinander rutscht */
 }
 
-.about-image img {
-  width: 180px;
-  height: 180px;
+.hero-text {
+  flex: 1;
+  min-width: 280px;
+}
+
+.hero-image img {
+  width: 220px;
+  height: 220px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid #ddd; /* optionaler Rahmen */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s;
-}
-
-.about-image img:hover {
-  transform: scale(1.05);
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
 }
         nav {
             max-width: 1200px;
@@ -428,20 +432,27 @@
         </nav>
     </header>
 
-    <section id="home" class="hero">
-        <h1 class="fly-in-text">Kevin Bauer</h1>
-        <p class="subtitle fly-in-text">International Economic Student</p>
-        <p class="fly-in-text" style="max-width: 600px; margin-bottom: 2rem; color: var(--muted-fg);">
-            Passionate about economics, business, and creating value through innovative projects.
-        </p>
-        <div class="fly-in-text" style="display: flex; gap: 1rem;">
-            <a href="#contact" class="btn">Get in Touch</a>
-            <a href="#projects" class="btn btn-outline">View Projects</a>
-        </div>
-           <div class="about-image">
-      <img src="https://cdn.prod.website-files.com/62b0202c2513a57a5ff05552/6731ccba831796a6f293440f_Kevin%20Bauer.png" alt="Kevin Portrait">
+ <section id="home" class="hero">
+  <div class="hero-content">
+    <div class="hero-text fly-in-text">
+      <h1>Kevin Bauer</h1>
+      <p class="subtitle">International Economic Student</p>
+      <p style="max-width: 600px; margin-bottom: 2rem; color: var(--muted-fg);">
+        Passionate about economics, business, and creating value through innovative projects.
+      </p>
+      <div style="display: flex; gap: 1rem;">
+        <a href="#contact" class="btn">Get in Touch</a>
+        <a href="#projects" class="btn btn-outline">View Projects</a>
+      </div>
     </div>
-    </section>
+
+    <div class="hero-image fly-in-text">
+      <img src="https://cdn.prod.website-files.com/62b0202c2513a57a5ff05552/6731ccba831796a6f293440f_Kevin%20Bauer.png"
+           alt="Kevin Portrait">
+    </div>
+  </div>
+</section>
+
 
     <section id="about">
         <h2 class="fly-in-text">About Me</h2>
