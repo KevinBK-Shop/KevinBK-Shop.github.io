@@ -80,16 +80,14 @@
             margin: 0 auto;
             padding: 2rem 2rem;
             position: relative;
-            transition: all 0.8s ease;
+            transition: all 1s ease;
         }
 
+        /* Subtle gradient effect on scroll - no lighting, just gentle gradient */
         section.section-active {
-            background: linear-gradient(135deg, rgba(0, 119, 190, 0.05) 0%, rgba(0, 119, 190, 0.02) 100%);
-            box-shadow: 0 0 60px rgba(0, 119, 190, 0.15);
-            border-radius: 1rem;
+            background: linear-gradient(to right, rgba(0, 119, 190, 0.03) 0%, transparent 100%);
         }
 
-        /* Add text fly-in animation */
         .fly-in-text {
             opacity: 0;
             transform: translateX(-50px);
@@ -101,23 +99,31 @@
             transform: translateX(0);
         }
 
-        /* Update skill animations to be reversible */
-        .skill-category {
-            background: var(--card);
-            padding: 1.5rem;
-            border-radius: 0.5rem;
-            border: 1px solid var(--border);
-            opacity: 0;
-            transform: translateX(-100px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
+        /* Individual skill boxes with reversible animations */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 2rem;
         }
 
-        .skill-category.animate-in {
+        .skill-box {
+            background: var(--card);
+            padding: 0.75rem 1.25rem;
+            border-radius: 0.5rem;
+            border: 1px solid var(--border);
+            font-size: 0.9rem;
+            opacity: 0;
+            transform: translateX(-100px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .skill-box.animate-in {
             opacity: 1;
             transform: translateX(0);
         }
 
-        .skill-category.animate-out {
+        .skill-box.animate-out {
             opacity: 0;
             transform: translateX(100px);
         }
@@ -190,13 +196,6 @@
             border-color: #005a94;
         }
 
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
         .projects-container {
             position: relative;
             max-width: 800px;
@@ -267,11 +266,6 @@
 
         .social-link:hover {
             transform: translateY(-2px);
-        }
-
-        .social-link:disabled {
-            opacity: 0.3;
-            cursor: not-allowed;
         }
 
         .slider-nav {
@@ -348,18 +342,6 @@
             margin-bottom: 2rem;
         }
 
-        .contact-form {
-            display: none;
-            max-width: 600px;
-            margin-top: 2rem;
-            margin-left: auto;
-            margin-right: auto;
-            background: var(--card);
-            padding: 2rem;
-            border-radius: 0.5rem;
-            border: 1px solid var(--border);
-        }
-
         @media (max-width: 768px) {
             h1 {
                 font-size: 2rem;
@@ -379,11 +361,6 @@
 
             .nav-links {
                 gap: 1rem;
-            }
-
-            .skills-grid,
-            .projects-grid {
-                grid-template-columns: 1fr;
             }
 
             .social-links {
@@ -420,7 +397,7 @@
     <section id="about">
         <h2 class="fly-in-text">About Me</h2>
         <p class="fly-in-text" style="max-width: 800px; font-size: 1.125rem; line-height: 1.8;">
-            Hello! I'm Kevin Bauer, an International Economic Student with a passion for understanding global markets, 
+            I'm Kevin Bauer, an International Economic Student with a passion for understanding global markets, 
             business dynamics, and entrepreneurship. Currently, I'm building practical business experience through 
             my detailing business while pursuing my studies. I believe in combining theoretical knowledge with 
             real-world application to create meaningful impact.
@@ -480,36 +457,22 @@
         </div>
     </section>
 
+    <!-- Individual skill boxes instead of categories -->
     <section id="skills">
         <h2 class="fly-in-text">Skills</h2>
         <div class="skills-grid">
-            <div class="skill-category">
-                <h3>Business & Economics</h3>
-                <div class="skill-list">
-                    <span class="skill-tag">International Economics</span>
-                    <span class="skill-tag">Market Analysis</span>
-                    <span class="skill-tag">Business Strategy</span>
-                    <span class="skill-tag">Financial Planning</span>
-                </div>
-            </div>
-            <div class="skill-category">
-                <h3>Entrepreneurship</h3>
-                <div class="skill-list">
-                    <span class="skill-tag">Business Development</span>
-                    <span class="skill-tag">Customer Relations</span>
-                    <span class="skill-tag">Operations Management</span>
-                    <span class="skill-tag">Marketing</span>
-                </div>
-            </div>
-            <div class="skill-category">
-                <h3>Soft Skills</h3>
-                <div class="skill-list">
-                    <span class="skill-tag">Communication</span>
-                    <span class="skill-tag">Problem Solving</span>
-                    <span class="skill-tag">Leadership</span>
-                    <span class="skill-tag">Time Management</span>
-                </div>
-            </div>
+            <div class="skill-box">International Economics</div>
+            <div class="skill-box">Market Analysis</div>
+            <div class="skill-box">Business Strategy</div>
+            <div class="skill-box">Financial Planning</div>
+            <div class="skill-box">Business Development</div>
+            <div class="skill-box">Customer Relations</div>
+            <div class="skill-box">Operations Management</div>
+            <div class="skill-box">Marketing</div>
+            <div class="skill-box">Communication</div>
+            <div class="skill-box">Problem Solving</div>
+            <div class="skill-box">Leadership</div>
+            <div class="skill-box">Time Management</div>
         </div>
     </section>
 
@@ -519,30 +482,10 @@
             Feel free to reach out for collaborations, opportunities, or just to connect!
         </p>
         
+        <!-- Removed Send Message button, kept only Get in Touch and Support My Work -->
         <div class="contact-buttons fly-in-text">
-            <button class="btn" onclick="toggleContactForm()">Send Message</button>
+            <a href="mailto:bauerkeving@gmail.com" class="btn">Get in Touch</a>
             <a href="https://paypal.me/yourusername" target="_blank" class="btn">Support My Work</a>
-        </div>
-        
-        <div id="contactForm" class="contact-form">
-            <form onsubmit="handleSubmit(event)">
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" required></textarea>
-                </div>
-                <div class="form-buttons">
-                    <button type="submit" class="btn">Send</button>
-                    <button type="button" class="btn btn-outline" onclick="toggleContactForm()">Cancel</button>
-                </div>
-            </form>
         </div>
 
         <div class="social-links fly-in-text">
@@ -571,27 +514,6 @@
     </section>
 
     <script>
-        function toggleContactForm() {
-            const form = document.getElementById('contactForm');
-            form.classList.toggle('active');
-        }
-
-        function handleSubmit(event) {
-            event.preventDefault();
-            
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-            
-            const subject = encodeURIComponent(`Message from ${name}`);
-            const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
-            
-            window.location.href = `mailto:bauerkeving@gmail.com?subject=${subject}&body=${body}`;
-            
-            toggleContactForm();
-            event.target.reset();
-        }
-
         // Smooth scroll for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -603,27 +525,6 @@
                         block: 'start'
                     });
                 }
-            });
-        });
-
-        const observerOptions = {
-            threshold: 0.2,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-in');
-                }
-            });
-        }, observerOptions);
-
-        // Observe all skill categories
-        document.addEventListener('DOMContentLoaded', () => {
-            const skillCategories = document.querySelectorAll('.skill-category');
-            skillCategories.forEach(category => {
-                observer.observe(category);
             });
         });
 
@@ -659,17 +560,15 @@
             updateSlider();
         }
 
-        /* Add section glow effect on scroll */
+        /* Subtle section gradient effect on scroll */
         const sectionObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    // Remove active class from all sections
                     document.querySelectorAll('section').forEach(s => {
                         if (s !== entry.target) {
                             s.classList.remove('section-active');
                         }
                     });
-                    // Add active class to current section
                     entry.target.classList.add('section-active');
                 }
             });
@@ -678,7 +577,7 @@
             rootMargin: '-100px 0px -100px 0px'
         });
 
-        /* Add text fly-in animation observer */
+        /* Text fly-in animation observer */
         const textObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -690,7 +589,7 @@
             rootMargin: '0px 0px -50px 0px'
         });
 
-        /* Add reversible skill animation observer */
+        /* Reversible skill box animations */
         const skillObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -708,7 +607,7 @@
 
         // Initialize observers on page load
         document.addEventListener('DOMContentLoaded', () => {
-            // Observe all sections for glow effect
+            // Observe all sections for subtle gradient effect
             document.querySelectorAll('section').forEach(section => {
                 sectionObserver.observe(section);
             });
@@ -718,10 +617,11 @@
                 textObserver.observe(text);
             });
 
-            // Observe skill categories for reversible animation
-            const skillCategories = document.querySelectorAll('.skill-category');
-            skillCategories.forEach(category => {
-                skillObserver.observe(category);
+            // Observe skill boxes for reversible animation
+            const skillBoxes = document.querySelectorAll('.skill-box');
+            skillBoxes.forEach((box, index) => {
+                box.style.transitionDelay = `${index * 0.05}s`;
+                skillObserver.observe(box);
             });
         });
     </script>
