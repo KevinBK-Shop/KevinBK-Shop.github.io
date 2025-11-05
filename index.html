@@ -371,12 +371,20 @@
                 flex-direction: column;
             }
         }
+
+        .tech-and-btn {
+    display: flex;
+    justify-content: space-between; /* Tech-Tags links, Button rechts */
+    align-items: center;
+    flex-wrap: wrap; /* damit es auf kleinen Screens umbricht */
+    margin-top: 1rem;
+        }
          .instagram-btn {
         display: inline-flex;
         align-items: center;
         gap: 0.25rem;
         padding: 0.25rem 0.75rem;
-        margin-left: 10rem;
+        margin-left: 5rem;
         background: #E1306C; /* Instagram Pink */
         color: white;
         border-radius: 0.5rem;
@@ -438,6 +446,7 @@
                             Managing all aspects from customer acquisition to service delivery, building a reputation for 
                             excellence and attention to detail.
                         </p>
+                    <div class="tech-and-btn">
                         <div class="tech-stack">    
                             <span class="tech-tag">Business Management</span>
                             <span class="tech-tag">Customer Service</span>
