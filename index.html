@@ -83,7 +83,11 @@
             transition: all 1s ease;
         }
 
-       /* Subtile Gradient-Überlagerung direkt auf Section */
+        html {
+        scroll-padding-top: 64px;
+        }
+
+        /* Subtile Gradient-Überlagerung direkt auf Section */
         section.section-active {
             background: linear-gradient(
                 135deg,
@@ -92,15 +96,6 @@
                 rgba(0, 119, 190, 0) 100%
         );
         transition: background 0.6s ease;
-        }
-
-        html {
-        scroll-padding-top: 64px;
-        }
-
-        /* Subtle gradient effect on scroll - no lighting, just gentle gradient */
-        section.section-active {
-            background: linear-gradient(to right, rgba(0, 119, 190, 0.03) 0%, transparent 100%);
         }
 
         .fly-in-text {
