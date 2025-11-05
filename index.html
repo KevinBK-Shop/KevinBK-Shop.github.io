@@ -79,6 +79,47 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 2rem 2rem;
+            position: relative;
+            transition: all 0.8s ease;
+        }
+
+        section.section-active {
+            background: linear-gradient(135deg, rgba(0, 119, 190, 0.05) 0%, rgba(0, 119, 190, 0.02) 100%);
+            box-shadow: 0 0 60px rgba(0, 119, 190, 0.15);
+            border-radius: 1rem;
+        }
+
+        /* Add text fly-in animation */
+        .fly-in-text {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s ease;
+        }
+
+        .fly-in-text.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Update skill animations to be reversible */
+        .skill-category {
+            background: var(--card);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid var(--border);
+            opacity: 0;
+            transform: translateX(-100px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .skill-category.animate-in {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .skill-category.animate-out {
+            opacity: 0;
+            transform: translateX(100px);
         }
 
         h1 {
@@ -123,24 +164,30 @@
         .btn {
             display: inline-block;
             padding: 0.75rem 1.5rem;
-            background: var(--fg);
-            color: var(--bg);
+            background: var(--ocean-blue);
+            color: white;
             text-decoration: none;
             border-radius: 0.5rem;
-            transition: opacity 0.2s;
+            transition: all 0.2s;
             border: none;
             cursor: pointer;
             font-size: 1rem;
         }
 
         .btn:hover {
-            opacity: 0.9;
+            background: #005a94;
+            transform: translateY(-2px);
         }
 
         .btn-outline {
-            background: transparent;
-            color: var(--fg);
-            border: 1px solid var(--border);
+            background: var(--ocean-blue);
+            color: white;
+            border: 1px solid var(--ocean-blue);
+        }
+
+        .btn-outline:hover {
+            background: #005a94;
+            border-color: #005a94;
         }
 
         .skills-grid {
@@ -148,46 +195,6 @@
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
-        }
-
-        .skill-category {
-            background: var(--card);
-            padding: 1.5rem;
-            border-radius: 0.5rem;
-            border: 1px solid var(--border);
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .skill-category.animate-in {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .skill-category:nth-child(1) {
-            transition-delay: 0.1s;
-        }
-
-        .skill-category:nth-child(2) {
-            transition-delay: 0.2s;
-        }
-
-        .skill-category:nth-child(3) {
-            transition-delay: 0.3s;
-        }
-
-        .skill-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .skill-tag {
-            background: var(--muted);
-            padding: 0.5rem 1rem;
-            border-radius: 0.25rem;
-            font-size: 0.875rem;
         }
 
         .projects-container {
@@ -399,20 +406,20 @@
     </header>
 
     <section id="home" class="hero">
-        <h1>Kevin Bauer</h1>
-        <p class="subtitle">International Economic Student</p>
-        <p style="max-width: 600px; margin-bottom: 2rem; color: var(--muted-fg);">
+        <h1 class="fly-in-text">Kevin Bauer</h1>
+        <p class="subtitle fly-in-text">International Economic Student</p>
+        <p class="fly-in-text" style="max-width: 600px; margin-bottom: 2rem; color: var(--muted-fg);">
             Passionate about economics, business, and creating value through innovative projects.
         </p>
-        <div style="display: flex; gap: 1rem;">
+        <div class="fly-in-text" style="display: flex; gap: 1rem;">
             <a href="#contact" class="btn">Get in Touch</a>
             <a href="#projects" class="btn btn-outline">View Projects</a>
         </div>
     </section>
 
     <section id="about">
-        <h2>About Me</h2>
-        <p style="max-width: 800px; font-size: 1.125rem; line-height: 1.8;">
+        <h2 class="fly-in-text">About Me</h2>
+        <p class="fly-in-text" style="max-width: 800px; font-size: 1.125rem; line-height: 1.8;">
             I'm Kevin Bauer, an International Economic Student with a passion for understanding global markets, 
             business dynamics, and entrepreneurship. Currently, I'm building practical business experience through 
             my detailing business while pursuing my studies. I believe in combining theoretical knowledge with 
@@ -421,8 +428,8 @@
     </section>
 
     <section id="projects">
-        <h2>Projects</h2>
-        <div class="projects-container">
+        <h2 class="fly-in-text">Projects</h2>
+        <div class="projects-container fly-in-text">
             <div class="projects-slider">
                 <div class="projects-track" id="projectsTrack">
                     <div class="project-slide">
@@ -474,7 +481,7 @@
     </section>
 
     <section id="skills">
-        <h2>Skills</h2>
+        <h2 class="fly-in-text">Skills</h2>
         <div class="skills-grid">
             <div class="skill-category">
                 <h3>Business & Economics</h3>
@@ -507,14 +514,14 @@
     </section>
 
     <section id="contact">
-        <h2>Get in Touch</h2>
-        <p style="margin-bottom: 2rem; color: var(--muted-fg);">
+        <h2 class="fly-in-text">Get in Touch</h2>
+        <p class="fly-in-text" style="margin-bottom: 2rem; color: var(--muted-fg);">
             Feel free to reach out for collaborations, opportunities, or just to connect!
         </p>
         
-        <div class="contact-buttons">
+        <div class="contact-buttons fly-in-text">
             <button class="btn" onclick="toggleContactForm()">Send Message</button>
-            <a href="https://paypal.me/yourusername" target="_blank" class="btn btn-outline">Support My Work</a>
+            <a href="https://paypal.me/yourusername" target="_blank" class="btn">Support My Work</a>
         </div>
         
         <div id="contactForm" class="contact-form">
@@ -538,7 +545,7 @@
             </form>
         </div>
 
-        <div class="social-links">
+        <div class="social-links fly-in-text">
             <a href="https://instagram.com/kevin_bgb" target="_blank" class="social-link">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
@@ -651,6 +658,72 @@
             currentSlide = index;
             updateSlider();
         }
+
+        /* Add section glow effect on scroll */
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Remove active class from all sections
+                    document.querySelectorAll('section').forEach(s => {
+                        if (s !== entry.target) {
+                            s.classList.remove('section-active');
+                        }
+                    });
+                    // Add active class to current section
+                    entry.target.classList.add('section-active');
+                }
+            });
+        }, {
+            threshold: 0.3,
+            rootMargin: '-100px 0px -100px 0px'
+        });
+
+        /* Add text fly-in animation observer */
+        const textObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        /* Add reversible skill animation observer */
+        const skillObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.remove('animate-out');
+                    entry.target.classList.add('animate-in');
+                } else {
+                    entry.target.classList.remove('animate-in');
+                    entry.target.classList.add('animate-out');
+                }
+            });
+        }, {
+            threshold: 0.2,
+            rootMargin: '0px 0px -100px 0px'
+        });
+
+        // Initialize observers on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            // Observe all sections for glow effect
+            document.querySelectorAll('section').forEach(section => {
+                sectionObserver.observe(section);
+            });
+
+            // Observe all text elements for fly-in
+            document.querySelectorAll('.fly-in-text').forEach(text => {
+                textObserver.observe(text);
+            });
+
+            // Observe skill categories for reversible animation
+            const skillCategories = document.querySelectorAll('.skill-category');
+            skillCategories.forEach(category => {
+                skillObserver.observe(category);
+            });
+        });
     </script>
 </body>
 </html>
